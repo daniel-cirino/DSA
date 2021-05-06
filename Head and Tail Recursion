@@ -1,0 +1,19 @@
+#include <iostream>
+
+void fun(int n)
+{
+    if (n > 0)
+    {
+        // Head Recursion 
+        // fun(n-1)
+        // printf("%d ", n);
+        //Tail Recursion
+        printf("%d ", n);
+        fun(n-1);
+    }
+}
+
+int main()
+{
+    fun(3);
+}
