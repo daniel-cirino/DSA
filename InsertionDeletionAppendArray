@@ -20,35 +20,36 @@ void Display(struct Array arr)
 
 void Append(struct Array *arr, int x)
 {
-    if(arr->length<arr->size)
+    if(arr->length < arr->size) // if the number of elements is less than the capacity of the arr
     {
-        arr->A[arr->length++] = x ;
+        arr->A[arr->length++] = x; // Append a value into the last index and increment length.
     }
 }
 
 void Insert(struct Array *arr, int index, int x)
 {
     int i;
-    for(i = arr->length; i > index; i--)
+    for(i = arr->length; i > index; i--) // Starts at last index and decrements. Continues till reaches index
     {
-        arr->A[i]=arr->A[i-1];
+        arr->A[i]=arr->A[i-1]; // Copy the current index value into the previous index value
     }
-    arr->A[index] = x;
-    arr->length++;
+    arr->A[index] = x; // Insert the value into the index that the loop exited at
+    arr->length++; // Length increases by 1 once the another value has been inserted
+    // So increment length
 }
 
 int Delete(struct Array *arr, int index)
 {
     int x = 0;
     int i;
-    if (index>=0 && index < arr->length)
+    if (index>=0 && index < arr->length) // Checking if index is valid in relation to the length
     {
         x=arr->A[index];
-        for(i = index; i < arr->length-1; i++)
+        for(i = index; i < arr->length-1; i++) // Loop from the specified index for deletion to length-1
         {
-            arr->A[i] = arr->A[i+1];
+            arr->A[i] = arr->A[i+1]; // Shifts the elements forward. // Deletes the element on the index
         }
-        arr->length--;
+        arr->length--; // Number of elements reduced by one so length-1
         return x;
     }
 }
@@ -59,5 +60,10 @@ int main()
     Append(&arr1, 10);
     Delete(&arr1, 0);
     Insert(&arr1, 0, 12);
+    Display(arr1);
+}
+
+
+
     Display(arr1);
 }
